@@ -1,0 +1,287 @@
+<div class="container">
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <h2>New heist data</h2>
+    <hr />
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('name')?.errors &&
+            (courseForm.get('name')?.touched || courseForm.get('name')?.dirty)
+        }"
+      >
+        <label for="name" class="control-label" style="font-weight: bold">
+          Name</label
+        >
+        <input
+          type="text"
+          id="usernameunos"
+          class="form-control"
+          placeholder="Name"
+          formControlName="name"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('name')?.errors &&
+              courseForm.get('name')?.touched) ||
+            courseForm.get('name')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.name.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Name is required!
+          </div>
+          <div
+            *ngIf="courseForm.controls.name.errors?.minlength"
+            style="color: red; font-weight: bold"
+          >
+            Name must be greater then 2 characters!
+          </div>
+          <div
+            *ngIf="courseForm.controls.name.errors?.maxlength"
+            style="color: red; font-weight: bold"
+          >
+            Name must be less then 20 characters!
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="male" class="control-label male" style="font-weight: bold">
+          Location</label
+        >
+        <input
+          type="text"
+          id="usernameunos"
+          class="form-control"
+          placeholder="Location"
+          formControlName="location"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('location')?.errors &&
+              courseForm.get('location')?.touched) ||
+            courseForm.get('location')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.location.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Location is required!
+          </div>
+          <div
+            *ngIf="courseForm.controls.location.errors?.minlength"
+            style="color: red; font-weight: bold"
+          >
+            Location must be greater then 2 characters!
+          </div>
+          <div
+            *ngIf="courseForm.controls.location.errors?.maxlength"
+            style="color: red; font-weight: bold"
+          >
+            Location must be less then 20 characters!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('startTime')?.errors &&
+            (courseForm.get('startTime')?.touched ||
+              courseForm.get('startTime')?.dirty)
+        }"
+      >
+        <label for="startTime" class="control-label" style="font-weight: bold"
+          >Start time</label
+        >
+        <input
+          type="datetime"
+          id="firstnameunos"
+          class="form-control"
+          placeholder="startTime"
+          formControlName="startTime"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('startTime')?.errors &&
+              courseForm.get('startTime')?.touched) ||
+            courseForm.get('startTime')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.startTime.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Start time is required!
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('endTime')?.errors &&
+            (courseForm.get('endTime')?.touched ||
+              courseForm.get('endTime')?.dirty)
+        }"
+      >
+        <label for="endTime" class="control-label" style="font-weight: bold"
+          >End time</label
+        >
+        <input
+          type="datetime"
+          id="firstnameunos"
+          class="form-control"
+          placeholder="endTime"
+          formControlName="endTime"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('endTime')?.errors &&
+              courseForm.get('endTime')?.touched) ||
+            courseForm.get('endTime')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.endTime.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            End time is required!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('status')?.errors &&
+            (courseForm.get('status')?.touched ||
+              courseForm.get('status')?.dirty)
+        }"
+      >
+        <label for="status" class="control-label" style="font-weight: bold">
+          Status</label
+        >
+        <input
+          type="text"
+          readonly
+          id="firstnameunos"
+          class="form-control"
+          placeholder="endTime"
+          formControlName="status"
+        />
+      </div>
+    </div>
+
+    <div class="row dugmad">
+      <div class="col-1">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="
+            !courseForm.valid || skills.length === 0 || skills === undefined
+          "
+          class="add"
+          type="submit"
+          style="font-weight: bold"
+        >
+          Add
+        </button>
+      </div>
+      <div class="col-1">
+        <button
+          class="cancel"
+          mat-raised-button
+          color="warn"
+          (click)="onCancel()"
+          type="button"
+          style="font-weight: bold"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row rowskill">
+    <div class="col-md-6">
+      <label for="skillName" class="control-label" style="font-weight: bold"
+        >Skill name</label
+      >
+      <br />
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Name"
+        placeholder="Skill name"
+        class="nameskill"
+        required
+      />
+      <br />
+      <label for="skillLevel" class="control-label" style="font-weight: bold"
+        >Skill level (from * to 10x*)</label
+      >
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Level"
+        placeholder="Skill"
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="members" class="control-label" style="font-weight: bold"
+        >Required members</label
+      >
+      <br />
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="MembersNum"
+        placeholder="Required members"
+        class="nameskill"
+        required
+      />
+    </div>
+    <div class="col-md-12">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onAddSkill()"
+        class="addSkill"
+        style="font-weight: bold"
+      >
+        Add skill
+      </button>
+    </div>
+  </div>
+
+  <ul>
+    <li *ngFor="let skill of skills; let i = index">
+      <span class="fa fa-close" (click)="deleteSkill(i)"></span>
+      <br />
+      <span style="font-weight: bold">Skill name:{{ skill.name }}</span>
+      <br />
+      <span style="font-weight: bold">Skill level:{{ skill.level }}</span>
+      <br />
+      <span style="font-weight: bold"
+        >Required members:{{ skill.members }}</span
+      >
+    </li>
+  </ul>
+</div>

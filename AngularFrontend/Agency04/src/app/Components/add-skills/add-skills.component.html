@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="skillName" class="control-label" style="font-weight: bold"
+        >Skill name</label
+      >
+      <br />
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Name"
+        placeholder="Skill name"
+        class="nameskill"
+        required
+      />
+      <br />
+      <label for="skillLevel" class="control-label" style="font-weight: bold"
+        >Skill level (from * to 10x*)</label
+      >
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Level"
+        class="level"
+        placeholder="Skill"
+      />
+    </div>
+    <div class="col-md-12">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onAddSkill()"
+        class="addSkill"
+        style="font-weight: bold"
+      >
+        Add skill
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSave()"
+        class="save"
+        style="font-weight: bold"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <ul>
+      <li *ngFor="let skill of skills; let i = index">
+        <span class="fa fa-close" (click)="deleteSkill(i)"></span>
+        <br />
+        <span style="font-weight: bold">Skill name:{{ skill.name }}</span>
+        <br />
+        <span style="font-weight: bold">Skill level:{{ skill.level }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

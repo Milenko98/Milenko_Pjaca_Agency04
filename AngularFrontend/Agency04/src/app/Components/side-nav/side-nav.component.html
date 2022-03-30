@@ -1,0 +1,11 @@
+<div class="sidebar" (click)="onButtonGroupClick($event)">
+  <button routerLink="/HeistMembers" class="active">Heist Members</button>
+  <button routerLink="/Heists">Heists</button>
+  <button routerLink="/ReadyHeists">Ready Heists</button>
+  <button routerLink="/OutComesHeists">OutComes of a Heists</button>
+  <button routerLink="/MembersProfile">Members Profile</button>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

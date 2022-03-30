@@ -1,0 +1,38 @@
+.add {
+  margin-top: 50px;
+}
+
+table
+  > thead
+  > tr
+  > th.mat-header-cell.cdk-column-position.mat-column-position {
+  white-space: nowrap;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+td,
+th {
+  width: 18%;
+  padding-right: 90px;
+  font-size: 20px;
+}
+
+.ss {
+  position: relative;
+  left: 100px;
+  width: 400px;
+}
+.filter {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.highlight {
+  background: #42a948; /* green */
+}

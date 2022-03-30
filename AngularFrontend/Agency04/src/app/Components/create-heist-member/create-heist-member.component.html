@@ -1,0 +1,281 @@
+<div class="container">
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <h2>New member data</h2>
+    <hr />
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('name')?.errors &&
+            (courseForm.get('name')?.touched || courseForm.get('name')?.dirty)
+        }"
+      >
+        <label for="name" class="control-label" style="font-weight: bold">
+          Name</label
+        >
+        <input
+          type="text"
+          id="usernameunos"
+          class="form-control"
+          placeholder="Name"
+          formControlName="name"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('name')?.errors &&
+              courseForm.get('name')?.touched) ||
+            courseForm.get('name')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.name.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Name is required!
+          </div>
+          <div
+            *ngIf="courseForm.controls.name.errors?.minlength"
+            style="color: red; font-weight: bold"
+          >
+            Name must be greater then 2 characters!
+          </div>
+          <div
+            *ngIf="courseForm.controls.name.errors?.maxlength"
+            style="color: red; font-weight: bold"
+          >
+            Name must be less then 20 characters!
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="male" class="control-label male" style="font-weight: bold">
+          Male</label
+        >
+        <input
+          type="checkbox"
+          class="maleinput"
+          [checked]="male"
+          [(ngModel)]="male"
+          [ngModelOptions]="{ standalone: true }"
+          (change)="maleChange()"
+        />
+        <label
+          for="female"
+          class="control-label female"
+          style="font-weight: bold"
+        >
+          Female</label
+        >
+        <input
+          type="checkbox"
+          [(ngModel)]="female"
+          [ngModelOptions]="{ standalone: true }"
+          (change)="femaleChange()"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('email')?.errors &&
+            (courseForm.get('email')?.touched || courseForm.get('email')?.dirty)
+        }"
+      >
+        <label for="email" class="control-label" style="font-weight: bold"
+          >Email</label
+        >
+        <input
+          type="text"
+          id="firstnameunos"
+          class="form-control"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('email')?.errors &&
+              courseForm.get('email')?.touched) ||
+            courseForm.get('email')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.email.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Email is required!
+          </div>
+          <div
+            *ngIf="courseForm.controls.email.errors?.email"
+            style="color: red; font-weight: bold"
+          >
+            Email is not Valid!
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('mainSkill')?.errors &&
+            (courseForm.get('mainSkill')?.touched ||
+              courseForm.get('mainSkill')?.dirty)
+        }"
+      >
+        <label for="mainSkill" class="control-label" style="font-weight: bold"
+          >Main Skill</label
+        >
+        <input
+          type="text"
+          id="lastnameunos"
+          class="form-control"
+          placeholder="Main Skill"
+          formControlName="mainSkill"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('mainSkill')?.errors &&
+              courseForm.get('mainSkill')?.touched) ||
+            courseForm.get('mainSkill')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.mainSkill.errors?.minlength"
+            style="color: red; font-weight: bold"
+          >
+            Main Skill must be greater then 2 characters!
+          </div>
+          <div
+            *ngIf="courseForm.controls.mainSkill.errors?.maxlength"
+            style="color: red; font-weight: bold"
+          >
+            Main Skill must be less then 20 characters!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-6 form-group"
+        [ngClass]="{
+          'has-error':
+            courseForm.get('status')?.errors &&
+            (courseForm.get('status')?.touched ||
+              courseForm.get('status')?.dirty)
+        }"
+      >
+        <label for="status" class="control-label" style="font-weight: bold"
+          >Status</label
+        >
+        <input
+          type="text"
+          id="lozinkaunos"
+          class="form-control"
+          placeholder="Status"
+          formControlName="status"
+        />
+        <div
+          class="help-block"
+          *ngIf="
+            (courseForm.get('status')?.errors &&
+              courseForm.get('status')?.touched) ||
+            courseForm.get('status')?.dirty
+          "
+        >
+          <div
+            *ngIf="courseForm.controls.status.errors?.required"
+            style="color: red; font-weight: bold"
+          >
+            Status is required!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row dugmad">
+      <div class="col-1">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="
+            !courseForm.valid || skills.length === 0 || skills === undefined
+          "
+          class="add"
+          type="submit"
+          style="font-weight: bold"
+        >
+          Add
+        </button>
+      </div>
+      <div class="col-1">
+        <button
+          class="cancel"
+          mat-raised-button
+          color="warn"
+          (click)="onCancel()"
+          type="button"
+          style="font-weight: bold"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row rowskill">
+    <div class="col-md-6">
+      <label for="skillName" class="control-label" style="font-weight: bold"
+        >Skill name</label
+      >
+      <br />
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Name"
+        placeholder="Skill name"
+        class="nameskill"
+        required
+      />
+      <br />
+      <label for="skillLevel" class="control-label" style="font-weight: bold"
+        >Skill level (from * to 10x*)</label
+      >
+      <input
+        type="text"
+        id="lozinkaunos"
+        [(ngModel)]="Level"
+        placeholder="Skill"
+      />
+    </div>
+    <div class="col-md-12">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onAddSkill()"
+        class="addSkill"
+        style="font-weight: bold"
+      >
+        Add skill
+      </button>
+    </div>
+  </div>
+
+  <ul>
+    <li *ngFor="let skill of skills; let i = index">
+      <span class="fa fa-close" (click)="deleteSkill(i)"></span>
+      <br />
+      <span style="font-weight: bold">Skill name:{{ skill.name }}</span>
+      <br />
+      <span style="font-weight: bold">Skill level:{{ skill.level }}</span>
+    </li>
+  </ul>
+</div>

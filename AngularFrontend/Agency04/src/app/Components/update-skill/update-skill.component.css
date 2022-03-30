@@ -1,0 +1,13 @@
+.nameskill {
+  margin-bottom: 10px;
+}
+
+.addSkill {
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,23 @@
+.level {
+  margin-bottom: 10px;
+}
+button {
+  margin-bottom: 10px;
+}
+
+li {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.save {
+  margin-left: 10px;
+}
+
+ul {
+  margin-top: 10px;
+}
